@@ -34,7 +34,9 @@ function check(colorindex)
     
     if(gamePattern[colorindex] === userClickedPattern[colorindex] && colorindex === gamePattern.length-1)
     {
-        nextSequence() ;
+        setTimeout(function(){
+            nextSequence()
+        } , 1000);
     }
     else if(gamePattern[colorindex] !== userClickedPattern[colorindex])
     {
@@ -59,7 +61,7 @@ function nextSequence()
     level++;
     $("#level").text("Level " + level);
     let newcolor = Math.floor(Math.random()*4);
-    setTimeout(pressed(buttonColours[newcolor] , 4000));
+    pressed(buttonColours[newcolor]);
     gamePattern.push(buttonColours[newcolor]);
     console.log('gamePattern');
     userClickedPattern = [];
