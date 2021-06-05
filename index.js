@@ -7,7 +7,6 @@ var level = 0;
 $(document).ready(function(){
     $(document).keypress(function() {
         if (!started) {
-            $("#start").html(``);
             nextSequence();
             started = true;
         }
@@ -35,7 +34,7 @@ function check(colorindex)
     if(gamePattern[colorindex] === userClickedPattern[colorindex] && colorindex === gamePattern.length-1)
     {
         setTimeout(function(){
-            nextSequence()
+            nextSequence();
         } , 1000);
     }
     else if(gamePattern[colorindex] !== userClickedPattern[colorindex])
@@ -59,7 +58,8 @@ function check(colorindex)
 function nextSequence()
 {
     level++;
-    $("#level").text("Level " + level);
+    $("#level").text("Level " + level); 
+    $("#start").html(``);
     let newcolor = Math.floor(Math.random()*4);
     pressed(buttonColours[newcolor]);
     gamePattern.push(buttonColours[newcolor]);
